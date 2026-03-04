@@ -13,7 +13,8 @@ Write:
 Q2.2 Write three functions:
 - void swapByValue(int a, int b); 
 - void swapByAddress(int *a, int *b); 
-- void swapByReference(int &a, int &b); 
+- void swapByReference(int &a, int &b);
+
 Call all three in main() and observe which one actually swaps values.
 
 Q2.3 Write a program to store an integer value in a variable, then: 
