@@ -1,7 +1,6 @@
 ****C++ Programming****
 **Assignment 1**
-
-1. Q1. Create a class called Student with the following private data members:
+Q1. Create a class called Student with the following private data members:
 Implement a menu-driven program
 1. Accept Information 
 2. Display information 
