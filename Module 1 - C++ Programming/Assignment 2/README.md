@@ -6,7 +6,8 @@ Write:
 - A function setDimensions(int, int, int) that uses this-> to distinguish between 
 - member variables and parameters 
 - A function volume() to compute the volume 
-- Demonstrate: 
+
+  Demonstrate: 
 - Initialization using constructor 
 - Assignment using setDimensions()
 
@@ -21,6 +22,7 @@ Q2.3 Write a program to store an integer value in a variable, then:
 - Create a pointer pointing to the variable
 - Create a reference to the same variable 
 - Modify the value using pointer and reference 
+
 Print the variable after each change.
 
 Q2.4 Write a program that: 
@@ -35,11 +37,13 @@ Q2.6 Create a class Student with:
 - rollNo
 - name
 - marks 
+
 Write the following: 
 1. Default constructor 
 2. Parameterized constructor 
 3. Constructor that uses this-> pointer 
 4. A function to print student details 
+
 Create: 
 - One object using default constructor
 - Two objects using parameterized constructor
@@ -48,5 +52,6 @@ Q2.7 Create a class Employee with:
 - const int employeeId
 - string name
 - float salary 
+
 Write a constructor using initializer list to initialize all members. 
 - Add a function to display details.
