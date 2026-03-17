@@ -1,0 +1,148 @@
+-------------------------------------------------------------------------------
+Exercise 1
+----------------------------------------------------------------------------------
+
+1.
+create table SEMP(EMPNO char(4), EMPNAME char(20), BASIC float, DEPTNO char(2), DEPTHEAD char(4));
+
+2.
+create table SDEPT(DEPTNO char(2), DEPTNAME char(15));
+
+3. 
+insert into SDEPT(DEPTNO, DEPTNAME)
+values(10, 'Development'),
+(20, 'Training');
+
+4.
+insert into SEMP(EMPNO, EMPNAME, BASIC, DEPTNO, DEPTHEAD)
+values(0001, 'SUNIL', 6000, 10, NULL),
+(0002, 'HIREN', 8000, 20, NULL),
+(0003, 'ALI', 4000, 10, 0001),
+(0004, 'GEORGE', 6000, NULL, 0002);
+
+--------------------------------------------------------------
+create table S(`S#` varchar(5), Sname varchar(15), Status int, City varchar(20));
+
+insert into S(`S#`, Sname, Status, City) 
+values('S1', 'Smith', 20, 'London'),
+('S2', 'Jones', 10, 'Paris'),
+('S3', 'Blake', 30, 'Paris'),
+('S4', 'Clark', 20, 'London'),
+('S5', 'Adams', 30, 'Athens'),
+('S6', 'Jon', 20, 'Athens');
+
+select * from S;
+
+----------------------------------------------------------------
+
+
+create table P(`P#` varchar(5), Pname varchar(15), Color varchar(15), Weight int, City varchar(10));
+
+insert into P(`P#`, Pname, Color, Weight, City)
+values('P1', 'Nut', 'Red', 12, 'London'),
+('P2', 'Bolt', 'Green', 17, 'Paris'),
+('P3', 'Screw', 'Blue', 17, 'Rome'),
+('P4', 'Cam', 'Red', 14, 'London'),
+('P5', 'Cog', 'Blue', 19, 'Paris'),
+('P6', 'Bolt', 'Red', 20, 'Rome');
+
+select * from P;
+
+
+create table J(`J#` varchar(5), Jname varchar(15), City varchar(15));
+
+insert into J(`J#`, Jname, City)
+values('J1', 'Sorter', 'Paris'),
+('J2', 'Display', 'Rome'),
+('J3', 'OCR', 'Athens'),
+('J4', 'Console', 'Athens'),
+('J5', 'RAID', 'London'),
+('J6', 'Display', 'London');
+
+select * from J;
+
+------------------------------------------------------------------------------
+
+
+create table SPJ(`S#` varchar(5), `P#` varchar(5), `J#` varchar(5), Qty int);
+
+insert into SPJ(`S#`, `P#`, `J#`, Qty)
+values('S1', 'P1', 'J1', 100),
+('S2', 'P2', 'J2', 200),
+('S3', 'P3', 'J3', 700),
+('S4', 'P4', 'J4', 400),
+('S5', 'P5', 'J5', 200),
+('S6', 'P6', 'J6', 300);
+
+select * from SPJ;
+
+
+-------------------------------------------------------------------------------------
+
+5.
+select * from S;
+
+6.
+select `S#`, Sname from S;
+
+7.
+select Pname, Color from P where City = 'London';
+
+8.
+select * from S where City = 'London';
+
+9.
+select * from S where City = 'Paris' or City = 'Athens';
+
+10.
+select * from J;
+
+11.
+select Pname, Weight from P where Weight between 12 and 14;
+
+12.
+select * from S where Status>=20;
+
+13.
+select * from S where City != 'London';
+
+14.
+select distinct City from S;
+
+15.
+select Pname, Weight, Weight*1000 as Milligram, Weight/1000 as Kilogram from P;
+
+
+
+
+
+-------------------------------------------------------------------------------------
+Exercise 2
+--------------------------------------------------------------------------------------
+1.
+select * from s order by City desc;
+
+2. 
+select * from P order by City asc, Pname asc;
+
+3.
+select * from S where status between 10 and 20;
+
+4.
+select Pname, Weight from P where weight between 10 and 15;
+
+5.
+select * from P where Pname like 'S%';
+
+6.
+select * from S where City like 'L%';
+
+7.
+select * from J where Jname like '__n%';
+
+
+
+
+
+
+

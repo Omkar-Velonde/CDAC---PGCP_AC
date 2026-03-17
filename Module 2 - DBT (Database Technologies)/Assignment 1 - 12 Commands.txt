@@ -1,0 +1,171 @@
+--------------------------------
+Assignment –7
+----------------------------------
+Summarizing Data with Aggregate Functions.
+1) Write a query that counts all orders for October 3.
+---->
+select count(Onum) from orders where Odate='1990-10-03';
+
+2) Write a query that counts the number of different non-NULL city values in the 
+Customers table.
+---->
+select count(City) from customers where City is not null;
+
+3) Write a query that selects each customer’s smallest order.
+---->
+select Cnum, min(Amt) from Orders group by Cnum order by 1;
+
+4) Write a query that selects the first customer, in alphabetical order, whose name 
+begins with G.
+--->
+select Cname from customers where Cname like 'G%';
+
+5) Write a query that selects the highest rating in each city.
+--->
+select City, max(Rating) from customers group by City;
+
+6) Write a query that counts the number of salespeople registering orders for each 
+day. (If a salesperson has more than one order on a given day, he or she should be 
+counted only once.).
+--->
+select Odate, count(distinct Snum) from orders group by Odate;
+
+
+
+
+
+---------------------------------------------------
+Assignment –8
+----------------------------------------------------
+Formatting Query output.
+1) Assume each salesperson has a 12% commission. Write a query on the orders 
+table that will produce the order number, the salesperson number, and the amount 
+of the salesperson’s commission for that order.
+--->
+select Onum, Snum, Amt*0.12 from orders order by 1;
+
+2) Write a query on the Customers table that will find the highest rating in each city. 
+Put the output in this form:
+ For the city (city), the highest rating is : (rating).
+--->
+select concat('For the City: ',City, '  the highest rating is: ', max(Rating)) as Result from customers group by City;
+
+
+3) Write a query that lists customers in descending order of rating. Output the rating 
+field first, followed by the customer’s name and number.
+-->
+select Rating, Cname, Cnum from Customers order by Rating desc;
+
+4) Write a query that totals the orders for each day and places the results in 
+descending order.
+---->
+select Odate, sum(Amt) as Total_Orders from Orders group by Odate order by Total_Orders;
+
+
+
+
+
+
+-------------------------------------------
+Assignment – 9
+------------------------------------------
+Querying Multiple Tables at Once.
+1) Write a query that lists each order number followed by the name of the customer 
+who made the order.
+--->
+select Onum, Cname from orders, customers
+where orders.Cnum = customers.Cnum
+order by 1;
+
+2) Write a query that gives the names of both the salesperson and the customer for 
+each order along with the order number.
+--->
+select Onum, Sname, Cname from orders, customers, Salespeople
+where orders.Cnum = customers.Cnum and customers.Snum = salespeople.Snum
+order by 1;
+
+3) Write a query that produces all customers serviced by salespeople with a 
+commission above 12%. Output the customer’s name, the salesperson’s name, 
+and the salesperson’s rate of commission.
+--->
+select Cname, Sname, comm from customers, salespeople
+where comm>0.12 and customers.Snum = salespeople.Snum;
+
+4) Write a query that calculates the amount of the salesperson’s commission on each 
+order by a customer with a rating above 100.
+---->
+select Onum, Amt, Sname, Amt*comm from orders, customers, salespeople
+where Rating > 100 and orders.Cnum = customers.Cnum and customers.Snum = salespeople.Snum;
+
+
+
+--------------------------------------------
+Assignment – 10
+----------------------------------------------
+Joining a Table to Itself.
+1) Write a query that produces all pairs of salespeople who are living in the same 
+city. Exclude combinations of salespeople with themselves as well as duplicate 
+rows with the order reversed.
+--->
+select a.Sname, b.Sname from salespeople b, salespeople a where a.City = b.City and a.Snum<b.Snum;
+
+
+2) Write a query that produces the names and cities of all customers with the same 
+rating as Hoffman.
+--->
+select a.Cname, a.City from customers a, customers b where b.Cname='Hoffman' and a.Rating=b.Rating;
+
+
+
+
+-----------------------------------------------
+Assignment – 11
+-------------------------------------------------
+Subqueries.
+1) Write a query that uses a subquery to obtain all orders for the customer named 
+Cisneros. Assume you do not know his customer number (cnum).
+--->
+select * from orders where Cnum=(select Cnum from customers where Cname='Cisneros');
+
+2) Write a query that produces the names and ratings of all customers who have 
+above-average orders.
+--->
+select Cname, Rating from customers where Cnum in (select Cnum from orders where Amt > (select avg(Amt) from orders));
+
+3) Write a query that selects the total amount in orders for each salesperson for 
+whom this total is greater than the amount of the largest order in the table.
+--->
+select Snum, sum(Amt) from orders group by Snum having sum(Amt) > (select max(Amt) from orders);
+
+
+
+
+------------------------------------------------
+Assignment – 12
+------------------------------------------------
+Using the operators IN, ANY, and ALL.
+1) Write a query that selects all customers whose ratings are equal to or greater than 
+ANY of Serres’. 
+--->
+select Cname, Rating from customers where Rating >= any(select Rating from customers where Snum = (select Snum from salespeople where Sname='Serres'));
+
+
+2) Write a query using ANY or ALL that will find all salespeople who have no 
+customers located in their city. 
+--->
+select Sname from salespeople where City <> all(select City from customers where customers.Snum=salespeople.Snum);
+
+
+3) Write a query that selects all orders for amounts greater than any for the 
+customers in London. 
+--->
+select * from orders where Amt > any(select Amt from orders where Cnum in(select Cnum from Customers where City='London'));
+
+
+4) Write the above query using MIN or MAX.
+--->
+select * from orders where Amt > (select min(Amt) from orders where Cnum in(select Cnum from Customers where City='London'));
+
+
+
+
