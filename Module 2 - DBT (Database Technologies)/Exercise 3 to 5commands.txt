@@ -1,0 +1,181 @@
+----------------------------------------------------------------------------------
+SQL Exercise 3 
+----------------------------------------------------------------------------------
+1. Display all the Supplier names with the initial letter capital. 
+-->
+SELECT CONCAT(UPPER(LEFT(Sname, 1)), LOWER(SUBSTRING(Sname, 2))) AS Sname FROM s;
+
+ 
+2. Display all the Supplier names in upper case. 
+ -->
+select upper(Sname) from s;
+
+3. Display all the Supplier names in lower case.
+-->
+select lower(Sname) from s; 
+ 
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+-->
+select lpad(Sname, 25, ' ') from s; 
+ 
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’). 
+ HINT: REPLACE. 
+-->
+select replace(Sname, 'la', 'ro') from s;
+ 
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced
+with ‘o’. 
+-->
+select replace(replace(Sname, 'a', 'o'), 'l', 'r') from s;
+ 
+7. Display the Supplier names and the lengths of the names. 
+-->
+select Sname, length(Sname) from s;
+ 
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’. 
+-->
+select * from s where soundex(Sname)=soundex('BLOKE');
+ 
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.). 
+-->
+select Sname,
+case
+when status=10 then 'Ten'
+when status=20 then 'Twenty'
+when status=30 then 'Thirty'
+end "Status"
+from s;
+ 
+10. Display the current day (e.g. Thursday).
+select dayname(now()) from dual;
+
+
+
+
+-----------------------------
+SQL Exercise 4 
+------------------------------
+1. Display the minimum Status in the Supplier table. 
+-->
+select  min(status) from s;
+ 
+2. Display the maximum Weight in the Parts table. 
+-->
+select max(weight) from p;
+ 
+3. Display the average Weight of the Parts. 
+-->
+select avg(weight) from p;
+
+ 
+4. Display the total Quantity sold for part ‘P1’. 
+-->
+select sum(Qty) from spj where `P#`='P1';
+
+ 
+5. Display the total Quantity sold for each part.
+-->
+select `p#`, Qty from spj;
+ 
+ 
+6. Display the average Quantity sold for each part. 
+-->
+select `p#`, avg(Qty) from spj group by `p#`;
+
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity 
+is greater than 800. 
+-->
+select `p#`, max(Qty) from spj where Qty > 800 group by 1;
+
+
+8. Display the Status and the count of Suppliers with that Status. 
+-->
+select status, count(Sname) from s group by status;
+
+ 
+9. Display the count of Projects going on in different cities. 
+ -->
+select City, count(Jname) from j group by City;
+
+
+10. What is the difference between COUNT(Status) and COUNT(*) ? 
+-->
+Count(Status): count the rows using rows of particular column.
+Count(*): counts the rows using the rows of entire table.
+
+ 
+11. Display the Status and the Count of Suppliers with that Status in the following format 
+as shown below:- 
+ 
+Status Count 
+Ten 1 
+Twenty 2 
+Thirty 3
+-->
+select
+case
+when status=10 then 'Ten'
+when status=20 then 'Twenty'
+when status=30 then 'Thirty'
+end "Status",
+count(*)
+from s group by status order by 2;
+
+
+
+
+
+
+------------------------------------------------------------------------------
+SQL Exercise 5
+------------------------------------------------------------------------------
+
+1. Display the Supplier name and the Quantity sold. 
+ -->
+select Sname, Qty from s, spj where s.`S#`=spj.`S#`;
+
+2. Display the Part name and Quantity sold. 
+ -->
+select Pname, Qty from p, spj where p.`P#`=spj.`P#`;
+
+3. Display the Project name and Quantity sold. 
+-->
+select Jname, Qty from j, spj where j.`J#`=spj.`J#`;
+ 
+4. Display the Supplier name, Part name, Project name and Quantity sold. 
+ -->
+select Sname, Pname, Jname, Qty from s, p, j, spj where s.`S#`=spj.`S#` and p.`P#`=spj.`P#` and j.`J#`=spj.`J#`;
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City. 
+ -->
+select Sname, Pname from s, p, j, spj where s.`S#`=spj.`S#` and p.`P#`=spj.`P#` and j.`J#`=spj.`J#` and s.City=j.City;
+
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold. 
+ -->
+select Pname, Qty from p, spj where p.`P#`=spj.`P#` and color='red';
+
+7. Display all the Quantity sold by Suppliers with the Status = 20. 
+ -->
+select Sname, Qty from s, spj where s.`S#`=spj.`S#`and status=20;
+
+8. Display all the Parts and Quantity with a Weight > 14. 
+ -->
+select Pname, Qty from p, spj where p.`P#`=spj.`P#` and weight > 14;
+
+9. Display all the Project names and City, which has bought more than 500 Parts. 
+ -->
+select Jname, City from j, spj where j.`J#`=spj.`J#` and Qty>500;
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15. 
+ -->
+select Pname, Qty from p, spj where p.`P#`=spj.`P#` and weight < 15;
+
+11. Display all the Employee names and the name of their Managers.
+-->
+select empname, deptname from semp, sdept where semp.deptno=sdept.deptno;
+
+
+
+
+ 
