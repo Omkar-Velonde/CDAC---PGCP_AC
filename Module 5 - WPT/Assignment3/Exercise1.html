@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Q1 - Change Paragraph Style</title>
+  </head>
+  <body>
+    <h2>Paragraph Style Changer</h2>
+
+    <p id="para">
+      It is rightly said that being disciplined is essential in life. When a
+      person leads a disciplined life, they set an easy path to success. They
+      will develop an approach to happiness and a beautiful future ahead. Being
+      disciplined is the practice of having a scheduled daily routine which
+      helps an individual to be punctual and hard-working. An individual is
+      taught what being disciplined means from the time they are young. Even
+      though discipline takes a lot of effort, the advantages of a disciplined
+      life make it a worthwhile endeavour.
+    </p>
+
+    <button onclick="changeStyle()">Change Style</button>
+
+    <script>
+      function changeStyle() {
+        let p = document.getElementById("para");
+
+        p.style.color = "blue";
+        p.style.fontSize = "20px";
+        p.style.fontFamily = "Arial";
+        p.style.fontWeight = "bold";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Q2 - Form Data</title>
+  </head>
+  <body>
+    <h2>User Form</h2>
+
+    <form onsubmit="displayData(event)">
+      First Name: <input type="text" id="fname" /><br /><br />
+      Last Name: <input type="text" id="lname" /><br /><br />
+      Contact No: <input type="text" id="contact" /><br /><br />
+      Email ID: <input type="email" id="email" /><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h3>Output:</h3>
+    <p id="output"></p>
+
+    <script>
+      function displayData(event) {
+        event.preventDefault(); // prevent page reload
+
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let contact = document.getElementById("contact").value;
+        let email = document.getElementById("email").value;
+
+        document.getElementById("output").innerHTML =
+          "First Name: " +
+          fname +
+          "<br>" +
+          "Last Name: " +
+          lname +
+          "<br>" +
+          "Contact: " +
+          contact +
+          "<br>" +
+          "Email: " +
+          email;
+      }
+    </script>
+  </body>
+</html>

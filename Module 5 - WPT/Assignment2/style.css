@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+}
+
+#cover-screen {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#myImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 75px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px); /* glass effect */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  z-index: 1000;
+}
+
+#navbar img {
+  height: 40px;
+}
+
+#navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+#navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: 0.3s;
+}
+
+#navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: goldenrod;
+  transition: 0.3s;
+}
+
+#navbar-links a:hover::after {
+  width: 100%;
+}
+
+.hero-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  letter-spacing: 3px;
+}
+
+.hero-content h2 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.gold {
+  color: goldenrod;
+}
+
+.hero-content button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  background: goldenrod;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.hero-content button:hover {
+  background: red;
+  transform: scale(1.1);
+}
+
+.marquee {
+  background: black;
+  color: goldenrod;
+  padding: 10px;
+  text-align: center;
+}
+
+.section {
+  padding: 80px 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.section h1 {
+  margin-bottom: 15px;
+}
+
+.section p {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: goldenrod;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: goldenrod;
+  color: black;
+}
+
+/* FOOTER */
+footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social span {
+  margin: 5px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* HAMBURGER */
+#menu-icon {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    width: 200px;
+    background: black;
+    padding: 20px;
+  }
+
+  #navbar-links.show {
+    display: flex;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+  .hero-content h2 {
+    font-size: 20px;
+  }
+}
+
+.card {
+  width: 100%;
+  height: 200px;
+
+  padding-left: 20px;
+}
+
+#myVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.split-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 40px;
+  gap: 40px;
+}
+
+/* LEFT VIDEO */
+.split-section .left {
+  flex: 1;
+}
+
+.split-section .left video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* RIGHT TEXT */
+.split-section .right {
+  flex: 1;
+}
+
+.split-section .right h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.split-section .right p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.split-section .right button {
+  padding: 12px 25px;
+  border: none;
+  background: goldenrod;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.split-section .right button:hover {
+  background: red;
+  transform: scale(1.05);
+}

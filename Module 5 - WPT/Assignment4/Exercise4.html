@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Exercise 4</title>
+  </head>
+  <body>
+    <script>
+      function fetchData(url, callback) {
+        console.log("Fetching data from:", url);
+
+        setTimeout(() => {
+          const error = false;
+
+          if (error) {
+            callback("Error: Unable to fetch data", null);
+          } else {
+            const response = "Data received from " + url;
+            callback(null, response);
+          }
+        }, 2000);
+      }
+
+      // Call function
+      fetchData("https://www.google.com", function (error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(response);
+        }
+      });
+    </script>
+  </body>
+</html>

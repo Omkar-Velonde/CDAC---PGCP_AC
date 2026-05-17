@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Q3 - Remove Dropdown Items</title>
+  </head>
+  <body>
+    <h2>Remove Item from Dropdown</h2>
+
+    <select id="mySelect">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Orange</option>
+      <option>Mango</option>
+    </select>
+
+    <br /><br />
+
+    <button onclick="removeItem()">Remove Selected Item</button>
+
+    <script>
+      function removeItem() {
+        let select = document.getElementById("mySelect");
+        let index = select.selectedIndex;
+
+        if (index !== -1) {
+          select.remove(index);
+        } else {
+          alert("Please select an item first");
+        }
+      }
+    </script>
+  </body>
+</html>

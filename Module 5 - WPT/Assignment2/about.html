@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR (same as index.html) -->
+    <nav id="navbar">
+      <img src="./Images/Lamborghini_Logo.svg.png" />
+
+      <div id="navbar-links">
+        <a href="Home.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+      </div>
+
+      <div id="menu-icon" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div class="section">
+      <h1>About Lamborghini</h1>
+
+      <p>
+        Automobili Lamborghini is an iconic Italian brand known for luxury,
+        speed, and cutting-edge automotive design. Founded in 1963, the company
+        has consistently pushed the boundaries of performance and innovation.
+      </p>
+
+      <p>
+        Lamborghini vehicles are not just cars—they are a statement of power,
+        precision, and passion. Every model combines advanced engineering with
+        bold design, creating an unforgettable driving experience.
+      </p>
+
+      <p>
+        From legendary models like the Aventador and Huracán to modern hybrid
+        innovations, Lamborghini continues to inspire the future of mobility.
+      </p>
+
+      <h2>Our Vision</h2>
+      <p>
+        To lead the world in high-performance luxury automobiles while embracing
+        sustainability and innovation.
+      </p>
+
+      <h2>Our Mission</h2>
+      <p>
+        To deliver unmatched driving experiences through advanced technology,
+        superior design, and uncompromising quality.
+      </p>
+    </div>
+
+    <footer>
+      <p>Contact: lamborghini@email.com</p>
+      <div class="social">
+        <span>Instagram</span>
+        <span>LinkedIn</span>
+        <span>Twitter</span>
+        <span>Facebook</span>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navbar-links").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>

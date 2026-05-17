@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Exercise 5</title>
+  </head>
+  <body>
+    <script>
+      function fetchData(url, callback) {
+        setTimeout(() => {
+          const error = false;
+
+          if (error) {
+            callback("Error fetching data", null);
+          } else {
+            const response = "raw data from " + url;
+            callback(null, response);
+          }
+        }, 2000);
+      }
+
+      function processData(data, callback) {
+        const processed = data.toUpperCase();
+        callback(processed);
+      }
+
+      fetchData("https://www.google.com", function (error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          processData(response, function (result) {
+            console.log("Processed Data:", result);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

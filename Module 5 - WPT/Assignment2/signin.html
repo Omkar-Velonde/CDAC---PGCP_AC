@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <img src="./Images/Lamborghini_Logo.svg.png" />
+
+      <div id="navbar-links">
+        <a href="Home.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+      </div>
+
+      <div id="menu-icon" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div class="section">
+      <h1>Login</h1>
+
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button>Login</button>
+      </form>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navbar-links").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
